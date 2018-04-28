@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <% if (process.env.NODE_ENV === 'production') { %>
+      <link rel="stylesheet" href="/stylesheets/style-prod.css" />
+    <% } else { %>
+      <link rel="stylesheet" href="/stylesheets/style.css" />
+    <% } %>
+  </head>
+  <body>
+    <div id="react-app">Loading ...</div>
+    <% if (process.env.NODE_ENV === 'production') { %>
+      <script src="/javascripts/build-prod.js"></script>
+
+      <script src="https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
+      <script src="https://media.twiliocdn.com/sdk/js/chat/v1.0/twilio-chat.min.js"></script>
+
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+      <script src="/javascripts/index.js"></script>
+      <script src="/javascripts/md5.js"></script>
+
+      <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+      <script src="/javascripts/vendor/fingerprint2.js"></script>
+      <!-- <script src="http://cdn.jsdelivr.net/npm/fingerprintjs2@0.7.1/dist/fingerprint2.min.js"></script> -->
+      <script src="/javascripts/vendor/superagent.js"></script>
+    <% } else { %>
+      <script src="/javascripts/build.js"></script>
+
+      <script src="https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
+      <script src="https://media.twiliocdn.com/sdk/js/chat/v1.0/twilio-chat.min.js"></script>
+
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+      <script src="/javascripts/index.js"></script>
+      <script src="/javascripts/md5.js"></script>
+
+      <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+      <script src="/javascripts/vendor/fingerprint2.js"></script>
+      <!-- <script src="http://cdn.jsdelivr.net/npm/fingerprintjs2@0.7.1/dist/fingerprint2.min.js"></script> -->
+      <script src="/javascripts/vendor/superagent.js"></script>
+    <% } %>
+  </body>
+</html>
