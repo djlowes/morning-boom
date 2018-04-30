@@ -4,8 +4,6 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const User = new Schema({
-  albums: [Schema.Types.Mixed],
-  artists: [Schema.Types.Mixed],
   email: String,
   firstName: String,
   lastName: String,

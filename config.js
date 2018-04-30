@@ -10,3 +10,4 @@ exports.expressSession = parsed.expressSession;
 exports.mailgun = parsed.mailgun;
 exports.mongodb = parsed.mongodb;
 exports.port = parsed.port;
+exports.cfg = parsed.cfg;

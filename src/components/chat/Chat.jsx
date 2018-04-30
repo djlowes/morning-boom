@@ -1,6 +1,6 @@
 import React from 'react';
 import Sidebar from '../../components//shared/Sidebar';
-import './main.css';
+// import './main.css';
 
 export default class Chat extends React.Component {
   constructor(props) {

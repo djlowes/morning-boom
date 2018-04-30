@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Sidebar = () => (
   <div className="sidebar full-height">
     <div className="logo-container">
-      <img className="logo-image" src="http://www.clker.com/cliparts/7/9/N/b/B/g/boom-hi.png" alt="Review Butler Logo"/>
+      <img className="logo-image" src="http://www.clker.com/cliparts/7/9/N/b/B/g/boom-hi.png" alt="Boom"/>
     </div>
     <ul>
       <li>
@@ -21,6 +21,9 @@ const Sidebar = () => (
       </li>
       <li>
         <NavLink to="/profile" activeClassName="active">My Profile</NavLink>
+      </li>
+      <li>
+        <NavLink to="/admin" activeClassName="active">Admin</NavLink>
       </li>
       <li>
         <NavLink to="/logout" activeClassName="active">Logout</NavLink>

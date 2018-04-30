@@ -67,6 +67,7 @@ router.post('/register', async (req, res) => {
       email: DOMPurify.sanitize(req.body.email),
       firstName: DOMPurify.sanitize(req.body.firstName),
       lastName: DOMPurify.sanitize(req.body.lastName),
+      phone: DOMPurify.sanitize(req.body.phone),
       password: req.body.password,
     };
 

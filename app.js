@@ -5,6 +5,7 @@ const compression = require('compression');
 const express = require('express');
 const expressSession = require('express-session');
 const favicon = require('serve-favicon'); // eslint-disable-line
+const flash = require('connect-flash');
 const helmet = require('helmet');
 const LocalStrategy = require('passport-local').Strategy;
 const logger = require('morgan');
@@ -27,6 +28,7 @@ const authentication = require('./routes/api/authentication');
 const index = require('./routes/index');
 const users = require('./routes/api/users');
 const chat = require('./routes/api/chat');
+const message = require('./routes/api/message');
 
 const app = express();
 
@@ -62,6 +64,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Use connect-flash to persist informational messages across redirects
+app.use(flash());
+
 // Webpack Server
 if (process.env.NODE_ENV !== 'production') {
   const webpackCompiler = webpack(webpackConfig);
@@ -93,6 +98,7 @@ app.use('/api/authentication', authentication);
 app.use('/api/users', users);
 app.use('/*', index);
 app.use('/api/chat', chat);
+app.use('/api/message', message);
 
 // Configure Passport
 passport.use(new LocalStrategy(User.authenticate()));
@@ -101,6 +107,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
+  console.log(res);
   const err = new Error('Not Found');
   err.status = 404;
   next(err);

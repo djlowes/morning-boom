@@ -19,6 +19,7 @@ import MorningRoutines from './morning-routines/MorningRoutines';
 import Videos from './videos/Videos';
 import Chat from './chat/Chat';
 import MyProfile from './my-profile/MyProfile';
+import Admin from './admin/Admin';
 
 export default function Template(props) {
   const { authentication, progress } = props;
@@ -44,6 +45,7 @@ export default function Template(props) {
             <Route path="/videos" component={Videos} />
             <Route path="/chat" component={Chat} />
             <Route path="/profile" component={MyProfile} />
+            <Route path="/admin" component={Admin} />
           </section>
           <div className="loader-wrapper" style={progress > 0 ? { display: 'block' } : { display: 'none' }}>
             <div className="loader-box">
