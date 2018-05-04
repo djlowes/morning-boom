@@ -29,7 +29,7 @@ const sendMessages = function (request, response) {
 
 // const showForm = function (request, response) {
 //   // Render form, with any success or error flash messages
-//   response.render('admin', {
+//   response.render('/admin', {
 //     errors: request.flash('errors'),
 //     successes: request.flash('successes'),
 //   });

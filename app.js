@@ -29,6 +29,7 @@ const index = require('./routes/index');
 const users = require('./routes/api/users');
 const chat = require('./routes/api/chat');
 const message = require('./routes/api/message');
+// const form = require('./routes/api/form');
 
 const app = express();
 
@@ -99,6 +100,7 @@ app.use('/api/users', users);
 app.use('/*', index);
 app.use('/api/chat', chat);
 app.use('/api/message', message);
+// app.use('/', form);
 
 // Configure Passport
 passport.use(new LocalStrategy(User.authenticate()));

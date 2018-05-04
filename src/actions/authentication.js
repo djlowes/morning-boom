@@ -33,19 +33,19 @@ export function checkSession() {
         credentials: 'same-origin',
       },
     )
-    .then((response) => {
-      if (response.status === 200) {
-        return response.json();
-      }
-      return null;
-    })
-    .then((json) => {
-      if (json.username) {
-        return dispatch(sessionCheckSuccess(json));
-      }
-      return dispatch(sessionCheckFailure());
-    })
-    .catch(error => dispatch(sessionCheckFailure(error)));
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        }
+        return null;
+      })
+      .then((json) => {
+        if (json.username) {
+          return dispatch(sessionCheckSuccess(json));
+        }
+        return dispatch(sessionCheckFailure());
+      })
+      .catch(error => dispatch(sessionCheckFailure(error)));
   };
 }
 
@@ -72,19 +72,19 @@ export function createHash(email) {
         credentials: 'same-origin',
       },
     )
-    .then((response) => {
-      if (response.status === 200) {
-        return response.json();
-      }
-      return null;
-    })
-    .then((json) => {
-      if (json.success) {
-        return dispatch(passwordResetHashCreated(json));
-      }
-      return dispatch(passwordResetHashFailure(new Error('Something went wrong. Please try again.')));
-    })
-    .catch(error => dispatch(passwordResetHashFailure(error)));
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        }
+        return null;
+      })
+      .then((json) => {
+        if (json.success) {
+          return dispatch(passwordResetHashCreated(json));
+        }
+        return dispatch(passwordResetHashFailure(new Error('Something went wrong. Please try again.')));
+      })
+      .catch(error => dispatch(passwordResetHashFailure(error)));
 
     // turn off spinner
     return dispatch(decrementProgress());
@@ -117,22 +117,22 @@ export function logUserIn(userData) {
         credentials: 'same-origin',
       },
     )
-    .then((response) => {
-      if (response.status === 200) {
-        return response.json();
-      }
-      return null;
-    })
-    .then((json) => {
-      if (json) {
-        dispatch(loginSuccess(json));
-      } else {
-        dispatch(loginFailure(new Error('Email or Password Incorrect. Please Try again.')));
-      }
-    })
-    .catch((error) => {
-      dispatch(loginFailure(new Error(error)));
-    });
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        }
+        return null;
+      })
+      .then((json) => {
+        if (json) {
+          dispatch(loginSuccess(json));
+        } else {
+          dispatch(loginFailure(new Error('Email or Password Incorrect. Please Try again.')));
+        }
+      })
+      .catch((error) => {
+        dispatch(loginFailure(new Error(error)));
+      });
 
     // turn off spinner
     return dispatch(decrementProgress());
@@ -158,16 +158,16 @@ export function logUserOut() {
         credentials: 'same-origin',
       },
     )
-    .then((response) => {
-      if (response.status === 200) {
-        dispatch(logoutSuccess());
-      } else {
-        dispatch(logoutFailure(new Error(response.status)));
-      }
-    })
-    .catch((error) => {
-      dispatch(logoutFailure(new Error(error)));
-    });
+      .then((response) => {
+        if (response.status === 200) {
+          dispatch(logoutSuccess());
+        } else {
+          dispatch(logoutFailure(new Error(response.status)));
+        }
+      })
+      .catch((error) => {
+        dispatch(logoutFailure(new Error(error)));
+      });
 
     // turn off spinner
     return dispatch(decrementProgress());
@@ -197,23 +197,23 @@ export function registerUser(userData) {
         credentials: 'same-origin',
       },
     )
-    .then((response) => {
-      if (response.status === 200) {
-        return response.json();
-      }
-      return null;
-    })
-    .then(async (json) => {
-      if (json && json.username) {
-        await dispatch(loginSuccess(json));
-        await dispatch(registrationSuccess());
-      } else {
-        dispatch(registrationFailure(new Error(json.error.message ? 'Email or username already exists' : json.error)));
-      }
-    })
-    .catch((error) => {
-      dispatch(registrationFailure(new Error(error.message || 'Registration Failed. Please try again.')));
-    });
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        }
+        return null;
+      })
+      .then(async (json) => {
+        if (json && json.username) {
+          await dispatch(loginSuccess(json));
+          await dispatch(registrationSuccess());
+        } else {
+          dispatch(registrationFailure(new Error(json.error.message ? 'Email or username already exists' : json.error)));
+        }
+      })
+      .catch((error) => {
+        dispatch(registrationFailure(new Error(error.message || 'Registration Failed. Please try again.')));
+      });
 
     // turn off spinner
     return dispatch(decrementProgress());
@@ -243,22 +243,22 @@ export function savePassword(data) {
         credentials: 'same-origin',
       },
     )
-    .then((response) => {
-      if (response.status === 200) {
-        return response.json();
-      }
-      return null;
-    })
-    .then(async (json) => {
-      if (json && json.success) {
-        dispatch(passwordSaveSuccess());
-      } else {
-        dispatch(passwordSaveFailure(new Error(json.error.message ? 'There was an error saving the password. Please try again' : json.error)));
-      }
-    })
-    .catch((error) => {
-      dispatch(passwordSaveFailure(new Error(error.message || 'There was an error saving the password. Please try again.')));
-    });
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        }
+        return null;
+      })
+      .then(async (json) => {
+        if (json && json.success) {
+          dispatch(passwordSaveSuccess());
+        } else {
+          dispatch(passwordSaveFailure(new Error(json.error.message ? 'There was an error saving the password. Please try again' : json.error)));
+        }
+      })
+      .catch((error) => {
+        dispatch(passwordSaveFailure(new Error(error.message || 'There was an error saving the password. Please try again.')));
+      });
 
     // turn off spinner
     return dispatch(decrementProgress());

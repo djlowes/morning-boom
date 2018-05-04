@@ -1,110 +1,111 @@
-import React from 'react';
-import Sidebar from '../../components//shared/Sidebar';
-// import './main.css';
-
-export default class Chat extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div>
-        <div className="flex-wrapper">
-          <div className="columns">
-            <Sidebar />
-            <div className="full-height dashboard-detail">
-              <h2>Chat</h2>
-              <div id="login" className="popup">
-          <h3>Log In</h3>
-          <input id="login-name" placeholder="Identity" />
-          <button id="login-button" className="red-button">Log In As Guest</button>
-          <p>-or-</p>
-          <div className="g-signin2" data-onsuccess="googleLogIn" data-theme="light" />
-        </div>
-        <div id="add-member" className="popup">
-          <h3>Add User<div className="remove-button glyphicon glyphicon-remove" /></h3>
-          <input id="add-identity" placeholder="Identity" />
-          <button id="add-button" className="red-button">Add</button>
-        </div>
-        <div id="invite-member" className="popup">
-          <h3>Invite User<div className="remove-button glyphicon glyphicon-remove" /></h3>
-          <input id="invite-identity" placeholder="Identity" />
-          <button id="invite-button" className="red-button">Invite</button>
-        </div>
-        <div id="update-channel" className="popup">
-          <h3>Edit Channel<div className="remove-button glyphicon glyphicon-remove" /></h3>
-          <input id="update-channel-display-name" placeholder="Display Name" />
-          <input id="update-channel-unique-name" placeholder="Unique Name (Optional)" />
-          <input id="update-channel-desc" placeholder="Description (Optional)" />
-          <input disabled="true" type="checkbox" id="update-channel-private" /><label>Private Channel</label>
-          <button id="update-channel-submit" className="red-button">Update Channel</button>
-        </div>
-        <div id="create-channel" className="popup">
-          <h3>Create Channel<div className="remove-button glyphicon glyphicon-remove" /></h3>
-          <input id="create-channel-display-name" placeholder="Display Name" />
-          <input id="create-channel-unique-name" placeholder="Unique Name (Optional)" />
-          <input id="create-channel-desc" placeholder="Description (Optional)" />
-          <input type="checkbox" id="create-channel-private" /><label>Private Channel</label>
-          <button id="create-new-channel" className="red-button">Create Channel</button>
-        </div>
-        <div id="overlay" />
-        <div id="sidebar">
-          <div id="profile">
-            <img />
-            <label />
-            <div id="presence" />
-          </div>
-          <div id="channels">
-            <div id="invited-channels">
-              <ul />
-            </div>
-            <div id="my-channels">
-              <ul />
-            </div>
-            <div id="known-channels">
-              <ul />
-            </div>
-            <div id="public-channels">
-              <ul />
-            </div>
-            <div id="sidebar-footer">
-              <button id="create-channel-button" className="red-button">Create Channel</button>
-            </div>
-          </div>
-        </div>
-        <div id="no-channel">
-          <p>You are not currently viewing a Channel.</p>
-        </div>
-        <div id="channel">
-          <div id="channel-info">
-            <h1 id="channel-title" />
-            <h2 id="channel-desc" />
-            <button id="edit-channel" className="white-button">Edit Channel</button>
-            <button id="delete-channel" className="red-button">Delete Channel</button>
-          </div>
-          <div id="channel-body">
-            <div id="channel-chat">
-              <div id="channel-messages"><ul /></div>
-              <div id="channel-message-send">
-                <div id="typing-indicator"><span /></div>
-                <input type="textbox" id="message-body-input" />
-                <button id="send-message" className="red-button">Send</button></div>
-            </div>
-            <div id="channel-join-panel">
-              <button id="join-channel" className="red-button">Join this Channel</button></div>
-          </div>
-          <div id="channel-members">
-            <h3>Members</h3>
-            <button id="add-user" className="red-button">Add</button>
-            <button id="invite-user" className="red-button">Invite</button>
-            <ul />
-          </div>
-        </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+// import TwilioChat from 'twilio-chat';
+// import $ from 'jquery';
+// import React, { Component } from 'react';
+// import MessageForm from './MessageForm';
+// import MessageList from './MessageList';
+//
+// class Chat extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       messages: [],
+//       username: null,
+//       channel: null,
+//     };
+//   }
+//
+//   componentDidMount = () => {
+//     this.getToken()
+//       .then(this.createChatClient)
+//       .then(this.joinGeneralChannel)
+//       .then(this.configureChannelEvents)
+//       .catch((error) => {
+//         this.addMessage({ body: `Error: ${error.message}` });
+//       });
+//   }
+//
+//   getToken = () => {
+//     return new Promise((resolve, reject) => {
+//       this.addMessage({ body: 'Connecting...' })
+//
+//       $.getJSON('/token', (token) => {
+//         this.setState({ username: token.identity })
+//         resolve(token)
+//       }).fail(() => {
+//         reject(Error('Failed to connect.'))
+//       })
+//     })
+//   }
+//
+//   createChatClient = (token) => {
+//     return new Promise((resolve, reject) => {
+//       resolve(new TwilioChat(token.jwt))
+//     })
+//   }
+//
+//   joinGeneralChannel = (chatClient) => {
+//     return new Promise((resolve, reject) => {
+//       chatClient.getSubscribedChannels().then(() => {
+//         chatClient.getChannelByUniqueName('general').then((channel) => {
+//           this.addMessage({ body: 'Joining general channel...' })
+//           this.setState({ channel })
+//
+//           channel.join().then(() => {
+//             this.addMessage({ body: `Joined general channel as ${this.state.username}` })
+//             window.addEventListener('beforeunload', () => channel.leave())
+//           }).catch(() => reject(Error('Could not join general channel.')))
+//
+//           resolve(channel)
+//         }).catch(() => this.createGeneralChannel(chatClient))
+//       }).catch(() => reject(Error('Could not get channel list.')))
+//     })
+//   }
+//
+//   createGeneralChannel = (chatClient) => {
+//     return new Promise((resolve, reject) => {
+//       this.addMessage({ body: 'Creating general channel...' })
+//       chatClient
+//         .createChannel({ uniqueName: 'general', friendlyName: 'General Chat' })
+//         .then(() => this.joinGeneralChannel(chatClient))
+//         .catch(() => reject(Error('Could not create general channel.')))
+//     })
+//   }
+//
+//   addMessage = (message) => {
+//     const messageData = { ...message, me: message.author === this.state.username }
+//     this.setState({
+//       messages: [...this.state.messages, messageData],
+//     })
+//   }
+//
+//   handleNewMessage = (text) => {
+//     if (this.state.channel) {
+//       this.state.channel.sendMessage(text)
+//     }
+//   }
+//
+//   configureChannelEvents = (channel) => {
+//     channel.on('messageAdded', ({ author, body }) => {
+//       this.addMessage({ author, body })
+//     })
+//
+//     channel.on('memberJoined', (member) => {
+//       this.addMessage({ body: `${member.identity} has joined the channel.` })
+//     })
+//
+//     channel.on('memberLeft', (member) => {
+//       this.addMessage({ body: `${member.identity} has left the channel.` })
+//     })
+//   }
+//
+//   render() {
+//     return (
+//       <div className="App">
+//         <MessageList messages={this.state.messages} />
+//         <MessageForm onMessageSend={this.handleNewMessage} />
+//       </div>
+//     );
+//   }
+// }
+//
+// export default Chat;

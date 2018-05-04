@@ -1,15 +1,15 @@
-const credentials = require('../../credentials.json');
+const credentials = require('../../config');
 const express = require('express');
 const TokenProvider = require('../../lib/tokenprovider');
 
 const router = express.Router();
-const tokenProvider = new TokenProvider(credentials);
+const tokenProvider = new TokenProvider(credentials.cfg);
 
-if (credentials.authToken) {
+if (credentials.cfg.authToken) {
   console.warn('WARNING: The "authToken" field is deprecated. Please use "signingKeySecret".');
 }
 
-if (credentials.instanceSid) {
+if (credentials.cfg.instanceSid) {
   console.warn('WARNING: The "instanceSid" field is deprecated. Please use "serviceSid".');
 }
 
@@ -26,4 +26,4 @@ router.get('/getToken', function(req, res) {
   res.send(token);
 });
 
-module.exports = router; 
+module.exports = router;

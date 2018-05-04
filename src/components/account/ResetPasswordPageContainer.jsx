@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createHash, passwordResetClear} from '../../actions/authentication';
+import { createHash, passwordResetClear } from '../../actions/authentication';
 
 import ResetPasswordPage from './ResetPasswordPage';
 

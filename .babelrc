@@ -9,4 +9,12 @@
       }
     ],
   ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    "transform-es2015-destructuring",
+    "transform-es2015-arrow-functions",
+    "transform-runtime"
+  ],
 }
