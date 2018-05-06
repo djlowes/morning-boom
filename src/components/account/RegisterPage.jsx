@@ -38,8 +38,7 @@ export default class ProfilePage extends React.Component {
       <div className="row justify-content-center">
         <div className="col-10 col-sm-7 col-md-5 col-lg-4">
           <p>
-            Want to get started saving your favorite bands to MusicList?
-            Create an account! All fields are required.
+            Register to receive AWESOME motivational text messages and stay up-to-date with what your favourite people do for their morning routine.
           </p>
           <AvForm onValidSubmit={this.handleValidSubmit}>
             <AvGroup>
@@ -49,7 +48,7 @@ export default class ProfilePage extends React.Component {
                 name="email"
                 onChange={this.handleInputChange}
                 onKeyPress={this.handleKeyPress}
-                placeholder="noreply@musiclist.com"
+                placeholder="davidlowes@twilio.com"
                 required
                 type="email"
                 value={this.state.email}
@@ -103,7 +102,7 @@ export default class ProfilePage extends React.Component {
                 name="username"
                 onChange={this.handleInputChange}
                 onKeyPress={this.handleKeyPress}
-                placeholder="CaptainCode"
+                placeholder="TwilioMan"
                 required
                 type="text"
                 value={this.state.username}
@@ -118,7 +117,7 @@ export default class ProfilePage extends React.Component {
                 name="firstName"
                 onChange={this.handleInputChange}
                 onKeyPress={this.handleKeyPress}
-                placeholder="Jamie"
+                placeholder="John"
                 required
                 type="text"
                 value={this.state.firstName}

@@ -20,6 +20,8 @@ const sendMessages = function (request, response) {
   }).then(() => {
     request.flash('successes', 'Messages on their way!');
     response.redirect('/admin');
+    console.log("SUCCESS - YOUR MESSAGE WAS SENT!");
+    console.log("Your Message was", message);
   }).catch((err) => {
     console.log('err ' + err.message);
     request.flash('errors', err.message);
